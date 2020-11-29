@@ -1,0 +1,13 @@
+version: '3'
+services:
+  redis-server:
+    image: 'redis'
+  node-app:
+# docker-compose restart container:
+#     - always: for any reason
+#     - on-failure: only if we get a status code other than zero
+#     - unless-stopped: unless we forcefully stop it
+    restart: on-failure
+    build: .
+    ports:
+      - "4001:8081"
